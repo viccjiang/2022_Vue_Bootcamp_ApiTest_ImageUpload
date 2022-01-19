@@ -20,7 +20,7 @@
       id="file"
       placeholder="請輸入圖片連結"
     />
-
+    <a href="./index.html">回登入頁面</a>
   </div>
 
   <script>
@@ -39,15 +39,15 @@
     console.dir(fileInput);
     const file = fileInput.files[0];
     console.log(file);
-
     // #2 formData 格式 ，new formData( ) 產生表單格式
     const formData = new FormData();
     // #3 上傳所夾帶的欄位 file-to-upload，把欄位對應到檔案 file，用 append 把欄位夾帶進來
     formData.append('file-to-load',file);
-
+    
     axios.post(`${url}/api/${path}/admin/upload`,formData)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
+        console.log(res.data.imageUrl); // 取得圖片網址
       })
       .catch((err) => {
         console.dir(err.response);
